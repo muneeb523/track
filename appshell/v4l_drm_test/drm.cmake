@@ -1,0 +1,4 @@
+if(NOT DEFINED DRM_HEADER_PATH)
+    #set default header path
+    set (DRM_HEADER_PATH ${TOOLCHAIN_INCLUDE_DIR}/drm/)
+endif(NOT DEFINED DRM_HEADER_PATH)
