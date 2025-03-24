@@ -69,6 +69,7 @@ endif( DEFINED APPSHELL_TOP_COMPILE)
 add_subdirectory( drv/OV2775 )
 add_subdirectory( drv/OS08a20 )
 add_subdirectory( drv/AR1335 )
+add_subdirectory(drv/IMX351)
 #add_subdirectory( drv/OV5630 )
 ###add_subdirectory( drv/OV8810 )
 #add_subdirectory( drv/OV14825 )
@@ -87,6 +88,7 @@ include_directories(
     )
 
 add_subdirectory( drv/OS08a20 )
+add_subdirectory(drv/IMX351)
 
 add_custom_target(copy_shell_libs_${module} ALL
        COMMENT "##Copy isi drv cfg to shell libs"
