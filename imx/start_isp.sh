@@ -40,7 +40,7 @@ elif [ $NR_DEVICE_TREE_OS08A20 -eq 2 ]; then
 elif [ $NR_DEVICE_TREE_IMX351 -eq 1 ]; then
     echo "Starting isp_media_server for Single IMX351"
     cd $RUNTIME_DIR
-    exec ./run.sh -c imx351_4k -lm
+    exec ./run.sh -c imx351_1080p30  -lm
 elif [ $NR_DEVICE_TREE_IMX351 -eq 2 ]; then
     echo "Starting isp_media_server for Dual IMX351"
     cd $RUNTIME_DIR
