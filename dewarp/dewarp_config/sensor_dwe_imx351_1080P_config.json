@@ -2,8 +2,8 @@
 	"dewarpConfigArray": [
 		{
 			"source_image": {
-				"width": 2020,
-				"height": 1136
+				"width": 1920,
+				"height": 1080
 			},
 
 			"dewarpType": "LENS_CORRECTION",
