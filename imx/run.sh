@@ -33,7 +33,11 @@ USAGE+="\tos08a20_4k              - single os08a20 camera on MIPI-CSI1, 3840x216
 USAGE+="\tos08a20_1080p30hdr      - single os08a20 camera on MIPI-CSI1, 1920x1080, 30 fps, HDR configuration\n"
 USAGE+="\tdual_os08a20_1080p30hdr - dual os08a20 cameras on MIPI-CSI1/2, 1920x1080, 30 fps, HDR configuration\n"
 USAGE+="\tos08a20_4khdr           - single os08a20 camera on MIPI-CSI1, 3840x2160, 15 fps, HDR configuration\n"
+
+
 USAGE+="\timx351_1080p30         - single imx351 camera on MIPI-CSI1, 1920x1080, 30 fps\n"
+USAGE+="\timx351_4k              - single imx351 camera on MIPI-CSI1, 3840x2160, 30 fps\n"
+
 
 # parse command line arguments
 while [ "$1" != "" ]; do
@@ -94,6 +98,9 @@ write_default_mode_files () {
        echo "[mode.0]" >> IMX351_MODES.txt
        echo "xml = \"IMX351_8M_10_1080p_linear.xml\"" >> IMX351_MODES.txt
        echo "dwe = \"dewarp_config/sensor_dwe_imx351_1080P_config.json\"" >> IMX351_MODES.txt
+        echo "[mode.1]" >> IMX351_MODES.txt
+        echo "xml = \"IMx351_8M_10_4k_linear.xml\"" >> IMX351_MODES.txt
+        echo "dwe = \"dewarp_config/sensor_dwe_imx351_4K_config.json\"" >> IMX351_MODES.txt
 
 
 
@@ -101,6 +108,7 @@ write_default_mode_files () {
 
 # write the sensonr config file
 write_sensor_cfg_file () {
+
         local SENSOR_FILE="$1"
         local CAM_NAME="$2"
         local DRV_FILE="$3"
@@ -317,6 +325,16 @@ case "$ISP_CONFIG" in
                         MODE_FILE="IMX351_MODES.txt"
                         MODE="0"
                        write_sensor_cfg_file "Sensor0_Entry.cfg" $CAM_NAME $DRV_FILE $MODE_FILE $MODE
+                        ;;
+
+                    imx351_4k )
+                        MODULES=("imx351" "${MODULES[@]}")
+                        RUN_OPTION="CAMERA0"
+                        CAM_NAME="imx351"
+                        DRV_FILE="imx351.drv"
+                        MODE_FILE="IMX351_MODES.txt"
+                        MODE="1"
+                        write_sensor_cfg_file "Sensor0_Entry.cfg" $CAM_NAME $DRV_FILE $MODE_FILE $MODE
                         ;;
 
 
